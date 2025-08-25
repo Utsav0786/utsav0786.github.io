@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexLoans - Your Trusted Financial Partner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255,255,255,0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-buttons {
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-buttons .cta-button {
+            margin: 0 1rem;
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card .cta-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Calculator Section */
+        .calculator {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .calculator-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+
+        .result-display {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4ecdc4;
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Section - Founder Profile */
+        .about {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .founder-profile {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .founder-image {
+            text-align: center;
+        }
+
+        .profile-placeholder {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%);
+            background-size: 20px 20px;
+        }
+
+        .founder-icon {
+            font-size: 6rem;
+            color: white;
+            z-index: 1;
+            position: relative;
+        }
+
+        .founder-info h3 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .founder-title {
+            font-size: 1.2rem;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .experience-badge .years {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+            line-height: 1;
+        }
+
+        .experience-badge .text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .founder-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .founder-achievements {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .achievement {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .achievement:hover {
+            transform: translateY(-5px);
+        }
+
+        .achievement strong {
+            display: block;
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement span {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .founder-quote {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 2rem;
+            border-left: 4px solid #667eea;
+            border-radius: 10px;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #333;
+            margin: 0;
+        }
+
+        .founder-quote::before {
+            content: '"';
+            font-size: 3rem;
+            color: #667eea;
+            position: absolute;
+            margin-left: -1rem;
+            margin-top: -1rem;
+        }
+            padding: 80px 0;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: #f8f9fa;
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #4ecdc4;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #4ecdc4;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .calculator-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .founder-profile {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .founder-achievements {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons .cta-button {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-elements::before,
+        .floating-elements::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-elements::before {
+            top: 20%;
+            left: 10%;
+            animation-delay: -2s;
+        }
+
+        .floating-elements::after {
+            bottom: 20%;
+            right: 10%;
+            animation-delay: -4s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">NexLoans</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#calculator">Calculator</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#apply" class="cta-button">Apply Now</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="floating-elements"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Financial Dreams Start Here</h1>
+                <p>Get the best loan deals with competitive rates, quick approvals, and personalized financial solutions tailored just for you.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="cta-button">Explore Loans</a>
+                    <a href="#calculator" class="cta-button" style="background: rgba(255,255,255,0.2);">Calculate EMI</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Financial Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>Home Loans</h3>
+                    <p>Make your dream home a reality with our competitive home loan rates starting from 6.5% per annum.</p>
+                    <a href="#" class="cta-button">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚗</div>
+                    <h3>Auto Loans</h3>
+                    <p>Drive your dream car today with flexible auto loan options and quick approval processes.</p>
+                    <a href="#" class="cta-button">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👤</div>
+                    <h3>Personal Loans</h3>
+                    <p>Get instant personal loans for any purpose with minimal documentation and fast disbursement.</p>
+                    <a href="#" class="cta-button">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Business Loans</h3>
+                    <p>Fuel your business growth with customized business loan solutions and competitive interest rates.</p>
+                    <a href="#" class="cta-button">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>Education Loans</h3>
+                    <p>Invest in your future with education loans covering tuition, living expenses, and more.</p>
+                    <a href="#" class="cta-button">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Investment Advisory</h3>
+                    <p>Expert financial advice to help you make smart investment decisions and secure your future.</p>
+                    <a href="#" class="cta-button">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="calculator">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">EMI Calculator</h2>
+            <div class="calculator-container">
+                <div>
+                    <h3>Calculate Your Monthly EMI</h3>
+                    <p>Use our advanced EMI calculator to plan your finances better and choose the right loan amount.</p>
+                    <div class="form-group">
+                        <h4>Key Features:</h4>
+                        <ul style="list-style-type: none; padding: 0;">
+                            <li>✓ Instant calculations</li>
+                            <li>✓ Multiple loan types</li>
+                            <li>✓ Detailed breakdown</li>
+                            <li>✓ Compare different scenarios</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label for="loanAmount">Loan Amount (₹)</label>
+                        <input type="number" id="loanAmount" value="1000000" min="50000" max="50000000">
+                    </div>
+                    <div class="form-group">
+                        <label for="interestRate">Interest Rate (% per annum)</label>
+                        <input type="number" id="interestRate" value="8.5" min="1" max="30" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="loanTenure">Loan Tenure</label>
+                        <select id="tenureType">
+                            <option value="years">Years</option>
+                            <option value="months">Months</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="loanTenure" value="20" min="1" max="30">
+                    </div>
+                    <button class="cta-button" onclick="calculateEMI()" style="width: 100%; margin-top: 1rem;">Calculate EMI</button>
+                    
+                    <div class="result-display">
+                        <div class="result-value" id="emiResult">₹8,364</div>
+                        <p>Monthly EMI</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                            <div>
+                                <strong>Total Amount: </strong>
+                                <span id="totalAmount">₹20,07,360</span>
+                            </div>
+                            <div>
+                                <strong>Total Interest: </strong>
+                                <span id="totalInterest">₹10,07,360</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Meet Our Founder</h2>
+            <div class="founder-profile">
+                <div class="founder-image">
+                    <div class="profile-placeholder">
+                        <div class="founder-icon">👨‍💼</div>
+                    </div>
+                </div>
+                <div class="founder-info">
+                    <h3>Utsav Soni</h3>
+                    <p class="founder-title">Founder & CEO | Financial Planning Expert</p>
+                    <div class="experience-badge">
+                        <span class="years">9+</span>
+                        <span class="text">Years Experience</span>
+                    </div>
+                    <p class="founder-description">
+                        With over 9 years of dedicated service in the financial industry since 2016, Utsav Soni has been a trusted financial planner helping thousands of individuals and businesses achieve their financial goals. His expertise spans across loan structuring, investment planning, and comprehensive financial advisory services.
+                    </p>
+                    <div class="founder-achievements">
+                        <div class="achievement">
+                            <strong>2016</strong>
+                            <span>Started Career in Financial Planning</span>
+                        </div>
+                        <div class="achievement">
+                            <strong>500+</strong>
+                            <span>Successful Loan Approvals</span>
+                        </div>
+                        <div class="achievement">
+                            <strong>₹50Cr+</strong>
+                            <span>Loans Facilitated</span>
+                        </div>
+                        <div class="achievement">
+                            <strong>98%</strong>
+                            <span>Client Satisfaction Rate</span>
+                        </div>
+                    </div>
+                    <blockquote class="founder-quote">
+                        "My mission is to make financial services accessible, transparent, and tailored to each client's unique needs. Every financial decision should empower your future."
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose NexLoans?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Quick Approval</h3>
+                    <p>Get loan approval in as little as 24 hours with our streamlined process.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Safe</h3>
+                    <p>Your data is protected with bank-grade security and encryption.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💯</div>
+                    <h3>Best Rates</h3>
+                    <p>Competitive interest rates that save you money over the loan tenure.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📞</div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support to assist you with any queries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NexLoans</h3>
+                    <p>Your trusted partner for all financial needs. We provide comprehensive loan solutions with the best rates and fastest approvals in the industry.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Loan Products</h3>
+                    <ul>
+                        <li><a href="#">Home Loans</a></li>
+                        <li><a href="#">Auto Loans</a></li>
+                        <li><a href="#">Personal Loans</a></li>
+                        <li><a href="#">Business Loans</a></li>
+                        <li><a href="#">Education Loans</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>About Founder</h3>
+                    <ul>
+                        <li><a href="#about">Utsav Soni Profile</a></li>
+                        <li><a href="#">Financial Planning</a></li>
+                        <li><a href="#">9+ Years Experience</a></li>
+                        <li><a href="#">Industry Expertise</a></li>
+                        <li><a href="#">Client Success Stories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>📧 info@nexloans.com</li>
+                        <li>📞 +91 84010 78939</li>
+                        <li>📍 123 Finance Street, Business District</li>
+                        <li>🕒 Mon-Sat: 9AM-6PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NexLoans. All rights reserved. | Privacy Policy | Terms & Conditions</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // EMI Calculator Function
+        function calculateEMI() {
+            const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+            const interestRate = parseFloat(document.getElementById('interestRate').value);
+            const tenureValue = parseFloat(document.getElementById('loanTenure').value);
+            const tenureType = document.getElementById('tenureType').value;
+            
+            // Convert tenure to months
+            const tenureInMonths = tenureType === 'years' ? tenureValue * 12 : tenureValue;
+            
+            // Calculate monthly interest rate
+            const monthlyRate = interestRate / 12 / 100;
+            
+            // EMI calculation formula
+            const emi = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, tenureInMonths)) / 
+                       (Math.pow(1 + monthlyRate, tenureInMonths) - 1);
+            
+            const totalAmount = emi * tenureInMonths;
+            const totalInterest = totalAmount - loanAmount;
+            
+            // Update results
+            document.getElementById('emiResult').textContent = `₹${Math.round(emi).toLocaleString()}`;
+            document.getElementById('totalAmount').textContent = `₹${Math.round(totalAmount).toLocaleString()}`;
+            document.getElementById('totalInterest').textContent = `₹${Math.round(totalInterest).toLocaleString()}`;
+        }
+        
+        // Auto-calculate on input change
+        document.getElementById('loanAmount').addEventListener('input', calculateEMI);
+        document.getElementById('interestRate').addEventListener('input', calculateEMI);
+        document.getElementById('loanTenure').addEventListener('input', calculateEMI);
+        document.getElementById('tenureType').addEventListener('change', calculateEMI);
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(102, 126, 234, 0.95)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            }
+        });
+        
+        // Initialize calculator with default values
+        calculateEMI();
+    </script>
+</body>
+</html>
